@@ -58,6 +58,25 @@ const validateSignupForm = (formNode) => {
         isValid = false;
     }
 
+    // VALIDATE WORKSHOP TYPE
+    const typeNode = formNode.querySelector("#input-type");
+    if(typeNode.value === "") {
+        const typeErrorNode = document.createElement("p");
+        typeErrorNode.textContent = "Please select a workshop type.";
+        typeErrorNode.classList.add("warning");
+        typeNode.insertAdjacentElement("afterend", typeErrorNode);
+        isValid = false;
+    }
+
+    // VALIDATE AGREEMENT CHECKBOX
+    const agreeNode = formNode.querySelector("#input-agree");
+    if(!agreeNode.checked) {
+        const agreeErrorNode = document.createElement("p");
+        agreeErrorNode.textContent = "You must agree to the terms.";
+        agreeErrorNode.classList.add("warning");
+        agreeNode.insertAdjacentElement("afterend", agreeErrorNode);
+        isValid = false;
+    }
 
     
     return isValid;
